@@ -2,11 +2,11 @@ package sebastiansjalopydatabase;
 
 /**
  *
- * @author sebastian
+ * @author Sebastian Hall
  */
 public class Car {
     /*
-     * Member Declaration
+     * Private Member Declaration
      */
     private int id;
     private String make;

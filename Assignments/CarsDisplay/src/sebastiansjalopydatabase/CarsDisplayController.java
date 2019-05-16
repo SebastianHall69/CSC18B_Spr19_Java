@@ -26,15 +26,16 @@ public class CarsDisplayController implements Initializable {
             insertNewButton, deleteCurrentButton;
     
     @FXML
-    private TextField currentRecordTextField, totalRecordsTextField, 
-            carIdTextField, carMakeTextField, carModelTextField, carYearTextField,
-            carMileageTextField;
+    private TextField currentRecordTextfield, totalRecordsTextfield, 
+            carIdTextfield, carMakeTextfield, carModelTextfield, carYearTextfield,
+            carMileageTextfield;
     
     
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        
+        //Get result set of all cars from db
+        ResultSet rs = CarQueries.select();
     }    
     
 }

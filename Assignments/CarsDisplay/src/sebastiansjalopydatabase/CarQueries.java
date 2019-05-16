@@ -13,10 +13,10 @@ public class CarQueries
     private static final String DB_URL = "jdbc:derby://localhost:1527/Cars";//Url
     private static final String USERNAME = "Sebastian";//Username
     private static final String PASSWORD = "Kallel13$";//Password
-    private static final String SELECT_QUERY = "SELECT * FROM Cars;";
-    private static final String UPDATE_QUERY = "UPDATE Cars SET car_make=?, car_model=?, car_year=?, car_mileage=? WHERE car_id=?;";
-    private static final String INSERT_QUERY = "INSERT INTO Cars (car_make, car_model, car_year, car_mileage) VALUES (?,?,?,?);";
-    private static final String DELETE_QUERY = "DELETE FROM Cars WHERE car_id=?;";
+    private static final String SELECT_QUERY = "SELECT * FROM Cars";
+    private static final String UPDATE_QUERY = "UPDATE Cars SET car_make=?, car_model=?, car_year=?, car_mileage=? WHERE car_id=?";
+    private static final String INSERT_QUERY = "INSERT INTO Cars (car_make, car_model, car_year, car_mileage) VALUES (?,?,?,?)";
+    private static final String DELETE_QUERY = "DELETE FROM Cars WHERE car_id=?";
     private static ResultSet rs;//Query results
     
     public static ResultSet select()
@@ -33,7 +33,6 @@ public class CarQueries
         }
         catch(SQLException sqlEx)
         {
-            System.err.println("SOMETHING NULL IS HAPPENING");
             System.err.printf("%s%n",sqlEx.getMessage());
             return null;
         }
@@ -74,6 +73,7 @@ public class CarQueries
         String model = car.getModel();//Car model
         int year = car.getYear();//Car year
         int mileage = car.getMileage();//Car mileage
+        int id = car.getId();//Car unique id
         Connection conn;//Connection to db
         PreparedStatement query;//Prepared statement
         
@@ -88,6 +88,7 @@ public class CarQueries
             query.setString(2, model);
             query.setInt(3, year);
             query.setInt(4, mileage);
+            query.setInt(5, id);
             
             //Execute statement and return boolean result
             query.executeUpdate();
