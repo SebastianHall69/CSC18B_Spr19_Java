@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #f3e0be;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+         <children>
+            <Button fx:id="previousButton" focusTraversable="false" mnemonicParsing="false" text="Previous">
+               <HBox.margin>
+                  <Insets bottom="8.0" left="8.0" right="8.0" top="8.0" />
+               </HBox.margin>
+            </Button>
+            <TextField fx:id="currentRecordTextfield" prefWidth="50.0">
+               <HBox.margin>
+                  <Insets bottom="8.0" left="8.0" right="8.0" top="8.0" />
+               </HBox.margin>
+            </TextField>
+            <Label focusTraversable="false" text="of">
+               <HBox.margin>
+                  <Insets bottom="8.0" left="8.0" right="8.0" top="8.0" />
+               </HBox.margin>
+            </Label>
+            <TextField fx:id="totalRecordsTextfield" disable="true" prefWidth="50.0">
+               <HBox.margin>
+                  <Insets bottom="8.0" left="8.0" right="8.0" top="8.0" />
+               </HBox.margin>
+            </TextField>
+            <Button fx:id="nextButton" focusTraversable="false" mnemonicParsing="false" text="Next">
+               <HBox.margin>
+                  <Insets bottom="8.0" left="8.0" right="8.0" top="8.0" />
+               </HBox.margin>
+            </Button>
+         </children>
+      </HBox>
+      <GridPane alignment="CENTER" vgap="8.0">
+        <columnConstraints>
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="-Infinity" minWidth="10.0" prefWidth="100.0" />
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="-Infinity" minWidth="10.0" />
+        </columnConstraints>
+        <rowConstraints>
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+        </rowConstraints>
+         <children>
+            <Label focusTraversable="false" text="Car ID" />
+            <Label focusTraversable="false" text="Car Make" GridPane.rowIndex="1" />
+            <Label focusTraversable="false" text="Car Model" GridPane.rowIndex="2" />
+            <Label focusTraversable="false" text="Car Year" GridPane.rowIndex="3" />
+            <Label focusTraversable="false" text="Car Mileage" GridPane.rowIndex="4" />
+            <TextField fx:id="carIdTextfield" disable="true" editable="false" GridPane.columnIndex="1" />
+            <TextField fx:id="carMakeTextfield" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <TextField fx:id="carModelTextfield" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+            <TextField fx:id="carYearTextfield" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+            <TextField fx:id="carMileageTextfield" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+         </children>
+      </GridPane>
+      <HBox alignment="CENTER" maxWidth="-Infinity" minWidth="-Infinity" style="-fx-border-color: &quot;black&quot;; -fx-border-width: 2px;">
+         <children>
+            <Label text="Car Model">
+               <HBox.margin>
+                  <Insets bottom="8.0" left="8.0" right="8.0" top="8.0" />
+               </HBox.margin>
+            </Label>
+            <TextField fx:id="modelSearchTextfield">
+               <HBox.margin>
+                  <Insets bottom="8.0" left="8.0" right="8.0" top="8.0" />
+               </HBox.margin>
+            </TextField>
+            <Button fx:id="modelSearchButton" focusTraversable="false" mnemonicParsing="false" text="Find">
+               <HBox.margin>
+                  <Insets bottom="8.0" left="8.0" right="8.0" top="8.0" />
+               </HBox.margin>
+            </Button>
+         </children>
+         <VBox.margin>
+            <Insets bottom="14.0" left="14.0" right="14.0" top="14.0" />
+         </VBox.margin>
+         <padding>
+            <Insets bottom="14.0" left="14.0" right="14.0" top="14.0" />
+         </padding>
+      </HBox>
+      <FlowPane alignment="TOP_CENTER" prefHeight="132.0" prefWidth="600.0">
+         <children>
+            <Button fx:id="browseAllButton" focusTraversable="false" mnemonicParsing="false" text="Browse All Entries">
+               <FlowPane.margin>
+                  <Insets bottom="8.0" left="8.0" right="8.0" top="8.0" />
+               </FlowPane.margin>
+            </Button>
+            <Button fx:id="insertNewButton" focusTraversable="false" mnemonicParsing="false" text="Insert New Entry">
+               <FlowPane.margin>
+                  <Insets bottom="8.0" left="8.0" right="8.0" top="8.0" />
+               </FlowPane.margin>
+            </Button>
+            <Button fx:id="deleteCurrentButton" focusTraversable="false" mnemonicParsing="false" text="Delete Current Entry">
+               <FlowPane.margin>
+                  <Insets bottom="8.0" left="8.0" right="8.0" top="8.0" />
+               </FlowPane.margin>
+            </Button>
+         </children>
+      </FlowPane>
+   </children>
+</VBox>
