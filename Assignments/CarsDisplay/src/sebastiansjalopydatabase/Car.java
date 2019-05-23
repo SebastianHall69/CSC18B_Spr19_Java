@@ -11,8 +11,8 @@ public class Car {
     private int id;
     private String make;
     private String model;
-    private int year;
-    private int mileage;
+    private String year;
+    private float mileage;
     
     /*
      * Constructors
@@ -23,12 +23,12 @@ public class Car {
         id = -1;
         make = "default_make";
         model = "default_model";
-        year = -1;
+        year = "0000";
         mileage = -1;
     }
     
     //Constructor with all arguments for creating from db
-    Car(int id, String make, String model, int year, int mileage)
+    Car(int id, String make, String model, String year, float mileage)
     {
         this.id = id;
         this.make = make;
@@ -38,7 +38,7 @@ public class Car {
     }
     
     //Constructor without id for inserting into db from gui form
-    Car(String make, String model, int year, int mileage)
+    Car(String make, String model, String year, float mileage)
     {
         this.id = -1;
         this.make = make;
@@ -79,13 +79,13 @@ public class Car {
     }
     
     //Set year
-    public void setYear(int year)
+    public void setYear(String year)
     {
         this.year = year;
     }
     
     //Set mileage
-    public void setMileage(int mileage)
+    public void setMileage(float mileage)
     {
         this.mileage = mileage;
     }
@@ -112,13 +112,13 @@ public class Car {
     }
     
     //Get year
-    public int getYear()
+    public String getYear()
     {
         return this.year;
     }
     
     //Get mileage
-    public int getMileage()
+    public float getMileage()
     {
         return this.mileage;
     }
