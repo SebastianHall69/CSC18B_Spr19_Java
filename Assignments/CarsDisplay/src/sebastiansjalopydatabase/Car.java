@@ -1,5 +1,9 @@
 package sebastiansjalopydatabase;
 
+import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.property.SimpleFloatProperty;
+import javafx.beans.property.SimpleIntegerProperty;
+
 /**
  *
  * @author Sebastian Hall
@@ -8,11 +12,11 @@ public class Car {
     /*
      * Private Member Declaration
      */
-    private int id;
-    private String make;
-    private String model;
-    private String year;
-    private float mileage;
+    private SimpleIntegerProperty id;
+    private SimpleStringProperty make;
+    private SimpleStringProperty model;
+    private SimpleStringProperty year;
+    private SimpleFloatProperty mileage;
     
     /*
      * Constructors
@@ -20,41 +24,41 @@ public class Car {
     //Default constructor
     Car()
     {
-        id = -1;
-        make = "default_make";
-        model = "default_model";
-        year = "0000";
-        mileage = -1;
+        this.id = new SimpleIntegerProperty(-1);
+        this.make = new SimpleStringProperty("default_make");
+        this.model = new SimpleStringProperty("default_model");
+        this.year = new SimpleStringProperty("0000");
+        this.mileage = new SimpleFloatProperty(-1.0f);
     }
     
     //Constructor with all arguments for creating from db
     Car(int id, String make, String model, String year, float mileage)
     {
-        this.id = id;
-        this.make = make;
-        this.model = model;
-        this.year = year;
-        this.mileage = mileage;
+        this.id = new SimpleIntegerProperty(id);
+        this.make = new SimpleStringProperty(make);
+        this.model = new SimpleStringProperty(model);
+        this.year = new SimpleStringProperty(year);
+        this.mileage = new SimpleFloatProperty(mileage);
     }
     
     //Constructor without id for inserting into db from gui form
     Car(String make, String model, String year, float mileage)
     {
-        this.id = -1;
-        this.make = make;
-        this.model = model;
-        this.year = year;
-        this.mileage = mileage;
+        this.id = new SimpleIntegerProperty(-1);
+        this.make = new SimpleStringProperty(make);
+        this.model = new SimpleStringProperty(model);
+        this.year = new SimpleStringProperty(year);
+        this.mileage = new SimpleFloatProperty(mileage);
     }
     
     //Copy constructor
     Car(Car obj)
     {
-        this.id = obj.id;
-        this.make = obj.make;
-        this.model = obj.model;
-        this.year = obj.year;
-        this.mileage = obj.mileage;
+        this.id = new SimpleIntegerProperty(obj.id.get());
+        this.make = new SimpleStringProperty(obj.make.get());
+        this.model = new SimpleStringProperty(obj.model.get());
+        this.year = new SimpleStringProperty(obj.model.get());
+        this.mileage = new SimpleFloatProperty(obj.mileage.get());
     }
     
     /*
@@ -63,31 +67,31 @@ public class Car {
     //Set id
     public void setId(int id)
     {
-        this.id = id;
+        this.id.set(id);
     }
     
     //Set make
     public void setMake(String make)
     {
-        this.make = make;
+        this.make.set(make);
     }
     
     //Set model
     public void setModel(String model)
     {
-        this.model = model;
+        this.model.set(model);
     }
     
     //Set year
     public void setYear(String year)
     {
-        this.year = year;
+        this.year.set(year);
     }
     
     //Set mileage
     public void setMileage(float mileage)
     {
-        this.mileage = mileage;
+        this.mileage.set(mileage);
     }
     
     /*
@@ -96,31 +100,31 @@ public class Car {
     //Get id
     public int getId()
     {
-        return this.id;
+        return this.id.get();
     }
     
     //Get make
     public String getMake()
     {
-        return this.make;
+        return this.make.get();
     }
     
     //Get model
     public String getModel()
     {
-        return this.model;
+        return this.model.get();
     }
     
     //Get year
     public String getYear()
     {
-        return this.year;
+        return this.year.get();
     }
     
     //Get mileage
     public float getMileage()
     {
-        return this.mileage;
+        return this.mileage.get();
     }
     
     /*
@@ -130,7 +134,8 @@ public class Car {
     @Override
     public String toString()
     {
-        return "Id: " + this.id + "\nMake: " + this.make + "\nModel: " + this.model 
-                + "\nYear: " + this.year + "\nMileage: " + this.mileage + "\n";
+        return "Id: " + this.id.get() + "\nMake: " + this.make.get() + 
+                "\nModel: " + this.model.get() + "\nYear: " + this.year.get() + 
+                "\nMileage: " + this.mileage.get() + "\n";
     }
 }

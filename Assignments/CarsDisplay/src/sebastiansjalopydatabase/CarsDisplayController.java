@@ -7,15 +7,17 @@ package sebastiansjalopydatabase;
 
 import java.net.URL;
 import java.util.ResourceBundle;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.ResultSetMetaData;
+import javafx.scene.control.TableView;
+import javafx.scene.control.TableColumn;
 import javafx.scene.input.MouseEvent;
 import javafx.event.EventHandler;
+import javafx.scene.control.cell.PropertyValueFactory;
 
 /**
  *
@@ -25,12 +27,15 @@ public class CarsDisplayController implements Initializable {
     
     @FXML
     private Button previousButton, nextButton, modelSearchButton, browseAllButton,
-            insertNewButton, deleteCurrentButton;
+            insertNewButton, deleteCurrentButton, updateCurrentButton;
     
     @FXML
     private TextField currentRecordTextfield, totalRecordsTextfield, 
             carIdTextfield, carMakeTextfield, carModelTextfield, carYearTextfield,
             carMileageTextfield, modelSearchTextfield;
+    
+    @FXML
+    private TableView recordsTableview;
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -44,6 +49,27 @@ public class CarsDisplayController implements Initializable {
             carsMode();
         }
         
+        //Create table columns
+        TableColumn id = new TableColumn("Id"), make = new TableColumn("Make"), 
+                model = new TableColumn("Model"), year = new TableColumn("Year"),
+                mileage = new TableColumn("Mileage");
+        
+        //Set column width
+        make.setMinWidth(125);
+        model.setMinWidth(125);
+        
+        //Add columns to table
+        recordsTableview.getColumns().setAll(id, make, model, year, mileage);
+        
+        //Associate columns with data
+        id.setCellValueFactory(new PropertyValueFactory<Car, Integer>("id"));
+        make.setCellValueFactory(new PropertyValueFactory<Car, String>("make"));
+        model.setCellValueFactory(new PropertyValueFactory<Car, String>("model"));
+        year.setCellValueFactory(new PropertyValueFactory<Car, String>("year"));
+        mileage.setCellValueFactory(new PropertyValueFactory<Car, Float>("mileage"));
+        
+        //Update tableview data
+        updateTableview();
         
         //Add event handler for next button
         nextButton.addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent> () {
@@ -94,8 +120,9 @@ public class CarsDisplayController implements Initializable {
                 //Insert new car
                 if(CarQueries.insert(newCar))
                 {
-                    //Update totalRecordsTextfield
+                    //Update totalRecords and tableview
                     updateTotalRecords();
+                    updateTableview();
                     
                     //Clear out textfields
                     clearFields();
@@ -136,8 +163,9 @@ public class CarsDisplayController implements Initializable {
                 //Delete car from form
                 if(CarQueries.delete(id))
                 {
-                    //Update total records
+                    //Update total records and tableview
                     updateTotalRecords();
+                    updateTableview();
                     
                     //Check if no cars mode is needed
                     if(CarQueries.getNumRecords() == 0)
@@ -147,9 +175,116 @@ public class CarsDisplayController implements Initializable {
                     }
                     else
                     {
-                        
-                        changeRecord(Integer.parseInt(totalRecordsTextfield.getText()));
+                        if(Integer.parseInt(currentRecordTextfield.getText()) > Integer.parseInt(totalRecordsTextfield.getText()))
+                        {
+                            changeRecord(Integer.parseInt(totalRecordsTextfield.getText()));
+                        }
+                        else
+                        {
+                            changeRecord(Integer.parseInt(currentRecordTextfield.getText()));
+                        }
                     }
+                }
+            }
+        });
+        
+        //Add event handler for update current entry button
+        updateCurrentButton.addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent> () {
+            @Override
+            public void handle(MouseEvent event)
+            {
+                //Get data from textfields
+                Car car = getCarData();
+                
+                //If car has all necessary data
+                if(car != null)
+                {
+                    try
+                    {
+                        int id = Integer.parseInt(carIdTextfield.getText());
+                        if(id < 0) throw new NumberFormatException();
+                        car.setId(id);
+                        CarQueries.update(car);
+                        updateTableview();
+                    }
+                    catch(NumberFormatException nfEx)
+                    {
+                        carIdTextfield.setText("Invalid car id for update");
+                    }
+                    
+                }
+                else
+                {
+                    System.err.println("ERROR CAR IS NULL");
+                }
+            }
+        });
+        
+        //Add event handler for browse all button
+        browseAllButton.addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent> () {
+            @Override
+            public void handle(MouseEvent event)
+            {
+                //Check if currently visible or not
+                if(recordsTableview.isVisible())
+                {
+                    browseAllButton.setText("Browse All Records");
+                    recordsTableview.setVisible(false);
+                }
+                else
+                {
+                    browseAllButton.setText("Hide All Records");
+                    recordsTableview.setVisible(true);
+                    updateTableview();
+                }
+            }
+        });
+        
+        //Add event handler for model search button
+        modelSearchButton.addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent> (){
+            @Override
+            public void handle(MouseEvent event)
+            {
+                //Declare variables
+                String model = modelSearchTextfield.getText();
+                
+                //Exit function if model is empty
+                if(model.equals("")) return;
+                
+                //Search for items and set into table, set visible
+                recordsTableview.setItems(CarQueries.modelSearch(model));
+                recordsTableview.setVisible(true);
+                browseAllButton.setText("Hide Records");
+                
+                //Clear model search textfield
+                modelSearchTextfield.setText("");
+            }
+        });
+        
+        //Add event handler for tableview row selection
+        recordsTableview.getSelectionModel().selectedItemProperty().addListener((new ChangeListener<Car>() {
+                @Override
+                public void changed(ObservableValue<? extends Car> observable, Car oldValue, Car newValue) {
+                    //Change record to selected row
+                    changeRecord(1 + recordsTableview.getSelectionModel().getSelectedIndex());
+                }  
+            }));
+        
+        //Add event handler for current record textfield
+        currentRecordTextfield.textProperty().addListener(new ChangeListener<String> () {
+            @Override
+            public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue)
+            {
+                try
+                {
+                    int rowNum = Integer.parseInt(newValue);
+                    int max = Integer.parseInt(totalRecordsTextfield.getText());
+                    rowNum = (rowNum > max) ? max : (rowNum < 1) ? 1 : rowNum;
+                    changeRecord(rowNum);
+                }
+                catch(NumberFormatException nfEx)
+                {
+                    //Nothing
                 }
             }
         });
@@ -162,6 +297,7 @@ public class CarsDisplayController implements Initializable {
         modelSearchButton.setDisable(true);
         browseAllButton.setDisable(true);
         deleteCurrentButton.setDisable(true);
+        updateCurrentButton.setDisable(true);
         
         //Disable textfields
         currentRecordTextfield.setDisable(true);
@@ -179,6 +315,7 @@ public class CarsDisplayController implements Initializable {
         modelSearchButton.setDisable(false);
         browseAllButton.setDisable(false);
         deleteCurrentButton.setDisable(false);
+        updateCurrentButton.setDisable(false);
         
         //Enable textfields
         currentRecordTextfield.setDisable(false);
@@ -276,6 +413,12 @@ public class CarsDisplayController implements Initializable {
     {
         currentRecordTextfield.setText(Integer.toString(rowNum));
         setCarData(rowNum);
+    }
+    
+    public void updateTableview()
+    {
+        //Set observable array and columns in tableview
+        recordsTableview.setItems(CarQueries.getRecords());
     }
 }
 
