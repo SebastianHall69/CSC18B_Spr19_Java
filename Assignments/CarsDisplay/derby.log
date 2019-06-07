@@ -1,20 +1,102 @@
-Fri May 24 09:06:25 PDT 2019 : Apache Derby Network Server - 10.11.1.2 - (1629631) started and ready to accept connections on port 1527
+Wed Jun 05 15:38:23 PDT 2019 : Apache Derby Network Server - 10.11.1.2 - (1629631) started and ready to accept connections on port 1527
+Wed Jun 05 15:39:11 PDT 2019 Thread[DRDAConnThread_2,5,main] Cleanup action starting
+java.sql.SQLException: Database 'CalcResults' not found.
+	at org.apache.derby.impl.jdbc.SQLExceptionFactory.getSQLException(Unknown Source)
+	at org.apache.derby.impl.jdbc.SQLExceptionFactory.getSQLException(Unknown Source)
+	at org.apache.derby.impl.jdbc.Util.generateCsSQLException(Unknown Source)
+	at org.apache.derby.impl.jdbc.Util.generateCsSQLException(Unknown Source)
+	at org.apache.derby.impl.jdbc.EmbedConnection.newSQLException(Unknown Source)
+	at org.apache.derby.impl.jdbc.EmbedConnection.handleDBNotFound(Unknown Source)
+	at org.apache.derby.impl.jdbc.EmbedConnection.<init>(Unknown Source)
+	at org.apache.derby.jdbc.InternalDriver.getNewEmbedConnection(Unknown Source)
+	at org.apache.derby.jdbc.InternalDriver.connect(Unknown Source)
+	at org.apache.derby.jdbc.InternalDriver.connect(Unknown Source)
+	at org.apache.derby.jdbc.EmbeddedDriver.connect(Unknown Source)
+	at org.apache.derby.impl.drda.Database.makeConnection(Unknown Source)
+	at org.apache.derby.impl.drda.DRDAConnThread.getConnFromDatabaseName(Unknown Source)
+	at org.apache.derby.impl.drda.DRDAConnThread.verifyUserIdPassword(Unknown Source)
+	at org.apache.derby.impl.drda.DRDAConnThread.parseSECCHK(Unknown Source)
+	at org.apache.derby.impl.drda.DRDAConnThread.parseDRDAConnection(Unknown Source)
+	at org.apache.derby.impl.drda.DRDAConnThread.processCommands(Unknown Source)
+	at org.apache.derby.impl.drda.DRDAConnThread.run(Unknown Source)
+Caused by: ERROR XJ004: Database 'CalcResults' not found.
+	at org.apache.derby.iapi.error.StandardException.newException(Unknown Source)
+	at org.apache.derby.impl.jdbc.SQLExceptionFactory.wrapArgsForTransportAcrossDRDA(Unknown Source)
+	... 18 more
+============= begin nested exception, level (1) ===========
+ERROR XJ004: Database 'CalcResults' not found.
+	at org.apache.derby.iapi.error.StandardException.newException(Unknown Source)
+	at org.apache.derby.impl.jdbc.SQLExceptionFactory.wrapArgsForTransportAcrossDRDA(Unknown Source)
+	at org.apache.derby.impl.jdbc.SQLExceptionFactory.getSQLException(Unknown Source)
+	at org.apache.derby.impl.jdbc.SQLExceptionFactory.getSQLException(Unknown Source)
+	at org.apache.derby.impl.jdbc.Util.generateCsSQLException(Unknown Source)
+	at org.apache.derby.impl.jdbc.Util.generateCsSQLException(Unknown Source)
+	at org.apache.derby.impl.jdbc.EmbedConnection.newSQLException(Unknown Source)
+	at org.apache.derby.impl.jdbc.EmbedConnection.handleDBNotFound(Unknown Source)
+	at org.apache.derby.impl.jdbc.EmbedConnection.<init>(Unknown Source)
+	at org.apache.derby.jdbc.InternalDriver.getNewEmbedConnection(Unknown Source)
+	at org.apache.derby.jdbc.InternalDriver.connect(Unknown Source)
+	at org.apache.derby.jdbc.InternalDriver.connect(Unknown Source)
+	at org.apache.derby.jdbc.EmbeddedDriver.connect(Unknown Source)
+	at org.apache.derby.impl.drda.Database.makeConnection(Unknown Source)
+	at org.apache.derby.impl.drda.DRDAConnThread.getConnFromDatabaseName(Unknown Source)
+	at org.apache.derby.impl.drda.DRDAConnThread.verifyUserIdPassword(Unknown Source)
+	at org.apache.derby.impl.drda.DRDAConnThread.parseSECCHK(Unknown Source)
+	at org.apache.derby.impl.drda.DRDAConnThread.parseDRDAConnection(Unknown Source)
+	at org.apache.derby.impl.drda.DRDAConnThread.processCommands(Unknown Source)
+	at org.apache.derby.impl.drda.DRDAConnThread.run(Unknown Source)
+============= end nested exception, level (1) ===========
+Cleanup action completed
+Wed Jun 05 15:39:11 PDT 2019 Thread[DRDAConnThread_2,5,main] (DATABASE = CalcResults), (DRDAID = {1}), Database 'CalcResults' not found.
+Wed Jun 05 15:39:18 PDT 2019 Thread[DRDAConnThread_2,5,main] Cleanup action starting
+java.sql.SQLException: Database 'CalcResults' not found.
+	at org.apache.derby.impl.jdbc.SQLExceptionFactory.getSQLException(Unknown Source)
+	at org.apache.derby.impl.jdbc.SQLExceptionFactory.getSQLException(Unknown Source)
+	at org.apache.derby.impl.jdbc.Util.generateCsSQLException(Unknown Source)
+	at org.apache.derby.impl.jdbc.Util.generateCsSQLException(Unknown Source)
+	at org.apache.derby.impl.jdbc.EmbedConnection.newSQLException(Unknown Source)
+	at org.apache.derby.impl.jdbc.EmbedConnection.handleDBNotFound(Unknown Source)
+	at org.apache.derby.impl.jdbc.EmbedConnection.<init>(Unknown Source)
+	at org.apache.derby.jdbc.InternalDriver.getNewEmbedConnection(Unknown Source)
+	at org.apache.derby.jdbc.InternalDriver.connect(Unknown Source)
+	at org.apache.derby.jdbc.InternalDriver.connect(Unknown Source)
+	at org.apache.derby.jdbc.EmbeddedDriver.connect(Unknown Source)
+	at org.apache.derby.impl.drda.Database.makeConnection(Unknown Source)
+	at org.apache.derby.impl.drda.DRDAConnThread.getConnFromDatabaseName(Unknown Source)
+	at org.apache.derby.impl.drda.DRDAConnThread.verifyUserIdPassword(Unknown Source)
+	at org.apache.derby.impl.drda.DRDAConnThread.parseSECCHK(Unknown Source)
+	at org.apache.derby.impl.drda.DRDAConnThread.parseDRDAConnection(Unknown Source)
+	at org.apache.derby.impl.drda.DRDAConnThread.processCommands(Unknown Source)
+	at org.apache.derby.impl.drda.DRDAConnThread.run(Unknown Source)
+Caused by: ERROR XJ004: Database 'CalcResults' not found.
+	at org.apache.derby.iapi.error.StandardException.newException(Unknown Source)
+	at org.apache.derby.impl.jdbc.SQLExceptionFactory.wrapArgsForTransportAcrossDRDA(Unknown Source)
+	... 18 more
+============= begin nested exception, level (1) ===========
+ERROR XJ004: Database 'CalcResults' not found.
+	at org.apache.derby.iapi.error.StandardException.newException(Unknown Source)
+	at org.apache.derby.impl.jdbc.SQLExceptionFactory.wrapArgsForTransportAcrossDRDA(Unknown Source)
+	at org.apache.derby.impl.jdbc.SQLExceptionFactory.getSQLException(Unknown Source)
+	at org.apache.derby.impl.jdbc.SQLExceptionFactory.getSQLException(Unknown Source)
+	at org.apache.derby.impl.jdbc.Util.generateCsSQLException(Unknown Source)
+	at org.apache.derby.impl.jdbc.Util.generateCsSQLException(Unknown Source)
+	at org.apache.derby.impl.jdbc.EmbedConnection.newSQLException(Unknown Source)
+	at org.apache.derby.impl.jdbc.EmbedConnection.handleDBNotFound(Unknown Source)
+	at org.apache.derby.impl.jdbc.EmbedConnection.<init>(Unknown Source)
+	at org.apache.derby.jdbc.InternalDriver.getNewEmbedConnection(Unknown Source)
+	at org.apache.derby.jdbc.InternalDriver.connect(Unknown Source)
+	at org.apache.derby.jdbc.InternalDriver.connect(Unknown Source)
+	at org.apache.derby.jdbc.EmbeddedDriver.connect(Unknown Source)
+	at org.apache.derby.impl.drda.Database.makeConnection(Unknown Source)
+	at org.apache.derby.impl.drda.DRDAConnThread.getConnFromDatabaseName(Unknown Source)
+	at org.apache.derby.impl.drda.DRDAConnThread.verifyUserIdPassword(Unknown Source)
+	at org.apache.derby.impl.drda.DRDAConnThread.parseSECCHK(Unknown Source)
+	at org.apache.derby.impl.drda.DRDAConnThread.parseDRDAConnection(Unknown Source)
+	at org.apache.derby.impl.drda.DRDAConnThread.processCommands(Unknown Source)
+	at org.apache.derby.impl.drda.DRDAConnThread.run(Unknown Source)
+============= end nested exception, level (1) ===========
+Cleanup action completed
+Wed Jun 05 15:39:18 PDT 2019 Thread[DRDAConnThread_2,5,main] (DATABASE = CalcResults), (DRDAID = {2}), Database 'CalcResults' not found.
 ----------------------------------------------------------------
-Fri May 24 09:06:28 PDT 2019:
-Booting Derby version The Apache Software Foundation - Apache Derby - 10.11.1.2 - (1629631): instance a816c00e-016a-ea97-ea7a-ffffb850ce07 
-on database directory /home/sebastian/Desktop/18B/Assignments/CarsDisplay/Cars with class loader sun.misc.Launcher$AppClassLoader@1d44bcfa 
-Loaded from file:/home/sebastian/.jdk1.8.0_171/db/lib/derby.jar
-java.vendor=Oracle Corporation
-java.runtime.version=1.8.0_171-b11
-user.dir=/home/sebastian/.jdk1.8.0_171/db
-os.name=Linux
-os.arch=amd64
-os.version=4.18.0-18-generic
-derby.system.home=/home/sebastian/Desktop/18B/Assignments/CarsDisplay
-Database Class Loader started - derby.database.classpath=''
-----------------------------------------------------------------
-Fri May 24 12:05:04 PDT 2019: Shutting down Derby engine
-----------------------------------------------------------------
-Fri May 24 12:05:04 PDT 2019:
-Shutting down instance a816c00e-016a-ea97-ea7a-ffffb850ce07 on database directory /home/sebastian/Desktop/18B/Assignments/CarsDisplay/Cars with class loader sun.misc.Launcher$AppClassLoader@1d44bcfa 
+Wed Jun 05 15:40:34 PDT 2019: Shutting down Derby engine
 ----------------------------------------------------------------

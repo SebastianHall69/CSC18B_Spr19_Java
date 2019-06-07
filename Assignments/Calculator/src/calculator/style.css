@@ -1,0 +1,34 @@
+@font-face {
+    src: url("calculator.ttf");
+}
+
+.text-field {
+    -fx-font-family: "calculator";
+}
+
+#grid-pane .button {
+    -fx-font-size: 12pt;
+    -fx-pref-width: 37px;
+    -fx-pref-height: 37px;
+    -fx-focus-traversable: false;
+    -fx-background-color: #50394c;
+    -fx-text-fill: #FFF;
+}
+
+#root, .tool-bar {
+    -fx-background-color: rgb(245, 222, 179);
+}
+
+#resultTextfield {
+    -fx-font-size: 28pt;
+    -fx-background-color: rgb(60,60,60);
+    -fx-text-fill: rgb(255,255,255);
+    -fx-opacity: 1;
+}
+
+#inputTextfield {
+    -fx-font-size: 24pt;
+    -fx-background-color: rgb(245,245,245);
+    -fx-background-color: #50394c;
+    -fx-text-fill: #FFF;
+}

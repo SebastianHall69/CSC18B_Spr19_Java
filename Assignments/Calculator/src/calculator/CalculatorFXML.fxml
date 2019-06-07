@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.geometry.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox id="root" alignment="BOTTOM_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="482.0" prefWidth="331.0" stylesheets="@style.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="calculator.CalculatorFXMLController">
+   <children>
+      <ToolBar prefHeight="40.0" prefWidth="331.0">
+         <items>
+            <ChoiceBox fx:id="resultsChoicebox" prefWidth="202.0" />
+            <Button fx:id="saveResultButton" mnemonicParsing="false" text="Save Result" />
+         </items>
+         <padding>
+            <Insets bottom="8.0" left="14.0" right="14.0" top="8.0" />
+         </padding>
+      </ToolBar>
+      <TextField id="resultTextfield" fx:id="resultTextfield" alignment="BOTTOM_LEFT" editable="false" focusTraversable="false" prefHeight="194.0" prefWidth="331.0">
+         <padding>
+            <Insets bottom="8.0" left="8.0" right="8.0" top="8.0" />
+         </padding>
+         <VBox.margin>
+            <Insets bottom="14.0" left="14.0" right="14.0" top="14.0" />
+         </VBox.margin>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </TextField>
+      <TextField id="inputTextfield" fx:id="inputTextfield" alignment="CENTER_RIGHT" prefHeight="60.0">
+         <VBox.margin>
+            <Insets bottom="14.0" left="14.0" right="14.0" top="14.0" />
+         </VBox.margin>
+      </TextField>
+      <GridPane id="grid-pane" fx:id="buttonsGridPane" nodeOrientation="LEFT_TO_RIGHT" vgap="8.0">
+        <columnConstraints>
+            <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="-Infinity" minWidth="10.0" prefWidth="90.0" />
+            <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="-Infinity" minWidth="10.0" prefWidth="90.0" />
+            <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="-Infinity" minWidth="10.0" prefWidth="90.0" />
+            <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="-Infinity" minWidth="10.0" prefWidth="90.0" />
+          <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="-Infinity" minWidth="10.0" prefWidth="90.0" />
+          <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="-Infinity" minWidth="10.0" prefWidth="90.0" />
+        </columnConstraints>
+        <rowConstraints>
+            <RowConstraints maxHeight="-Infinity" minHeight="10.0" prefHeight="40.0" valignment="CENTER" vgrow="SOMETIMES" />
+          <RowConstraints maxHeight="-Infinity" minHeight="10.0" prefHeight="40.0" valignment="CENTER" vgrow="SOMETIMES" />
+          <RowConstraints maxHeight="-Infinity" minHeight="10.0" prefHeight="40.0" valignment="CENTER" vgrow="SOMETIMES" />
+          <RowConstraints maxHeight="-Infinity" minHeight="10.0" prefHeight="40.0" valignment="CENTER" vgrow="SOMETIMES" />
+        </rowConstraints>
+         <children>
+            <Button fx:id="sevenButton" mnemonicParsing="false" text="7" />
+            <Button fx:id="eightButton" mnemonicParsing="false" text="8" GridPane.columnIndex="1" />
+            <Button fx:id="nineButton" mnemonicParsing="false" text="9" GridPane.columnIndex="2" />
+            <Button fx:id="fourButton" mnemonicParsing="false" text="4" GridPane.rowIndex="1" />
+            <Button fx:id="fiveButton" mnemonicParsing="false" text="5" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <Button fx:id="sixButton" mnemonicParsing="false" text="6" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+            <Button fx:id="oneButton" mnemonicParsing="false" text="1" GridPane.rowIndex="2" />
+            <Button fx:id="twoButton" mnemonicParsing="false" text="2" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+            <Button fx:id="threeButton" mnemonicParsing="false" text="3" GridPane.columnIndex="2" GridPane.rowIndex="2" />
+            <Button fx:id="zeroButton" mnemonicParsing="false" text="0" GridPane.rowIndex="3" />
+            <Button fx:id="decimalButton" mnemonicParsing="false" text="." GridPane.columnIndex="1" GridPane.rowIndex="3" />
+            <Button fx:id="modButton" mnemonicParsing="false" text="\%" GridPane.columnIndex="2" GridPane.rowIndex="3" />
+            <Button fx:id="divideButton" mnemonicParsing="false" text="/" GridPane.columnIndex="3" />
+            <Button fx:id="multiplyButton" mnemonicParsing="false" text="*" GridPane.columnIndex="3" GridPane.rowIndex="1" />
+            <Button fx:id="subtractButton" mnemonicParsing="false" text="−" GridPane.columnIndex="3" GridPane.rowIndex="2" />
+            <Button fx:id="addButton" mnemonicParsing="false" text="+" GridPane.columnIndex="3" GridPane.rowIndex="3" />
+            <Button fx:id="backButton" mnemonicParsing="false" text="⏎" GridPane.columnIndex="4" />
+            <Button fx:id="leftParenButton" mnemonicParsing="false" text="(" GridPane.columnIndex="4" GridPane.rowIndex="1" />
+            <Button fx:id="powerButton" mnemonicParsing="false" text="^" GridPane.columnIndex="4" GridPane.rowIndex="2" />
+            <Button fx:id="equalButton" mnemonicParsing="false" prefHeight="35.0" prefWidth="88.0" text="=" GridPane.columnIndex="5" GridPane.rowIndex="3" />
+            <Button fx:id="clearButton" mnemonicParsing="false" text="C" GridPane.columnIndex="5" />
+            <Button fx:id="rightParenButton" mnemonicParsing="false" text=")" GridPane.columnIndex="5" GridPane.rowIndex="1" />
+            <Button fx:id="sqrtButton" mnemonicParsing="false" text="√" GridPane.columnIndex="5" GridPane.rowIndex="2" />
+            <Button fx:id="negativeButton" mnemonicParsing="false" text="±" GridPane.columnIndex="4" GridPane.rowIndex="3" />
+         </children>
+         <VBox.margin>
+            <Insets bottom="14.0" left="14.0" right="14.0" top="14.0" />
+         </VBox.margin>
+      </GridPane>
+   </children>
+</VBox>
